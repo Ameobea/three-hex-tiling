@@ -2,7 +2,7 @@
  * Adapted from https://www.shadertoy.com/view/MdyfDV
  */
 
-#define CON 0                                  // contrast preserving interpolation
+#define CON 0.8                                  // contrast preserving interpolation
 #define Z 8.                                   // patch scale inside example texture
 #define SKIP_LOW_MAGNITUDE_LOOKUPS 0           // Skips texture lookups from tiles that have low mix magnitude
 #define LOOKUP_SKIP_THRESHOLD 0.28             // The mix magnitude under which texture lookups will be skipped if `SKIP_LOW_MAGNITUDE_LOOKUPS` is enabled
@@ -88,9 +88,9 @@ vec4 textureNoTileNeyret(sampler2D samp, vec2 uv) {
     }
     #endif
 
-    #if CON
-    fragColor = m + fragColor / length(W);       // contrast preserving interp.
-    #endif
+    if (CON > 0.) {
+        fragColor = m + fragColor / length(W);       // contrast preserving interp.
+    }
 
     fragColor = clamp(rgb2srgb(fragColor), 0., 1.);
     if (m.g == 0.) fragColor = fragColor.rrrr;   // handles B&W (i.e. "red") textures

@@ -7,7 +7,7 @@ export const buildFragment = (
 ) => {
   const tileBreakFrag = tileBreakingNeyretFragment.replace(
     "#define Z 8.",
-    `#define Z ${(patchScale ?? 16).toFixed(4)}`
+    `#define Z ${(patchScale ?? 12).toFixed(4)}`
   );
 
   const customMapFragment = `
