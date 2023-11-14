@@ -1,3 +1,7 @@
-import { patchMeshPhysicalMaterial } from "./MeshPhysicalMaterial/MeshPhysicalMaterial";
+import {
+  patchMeshPhysicalMaterial,
+  patchMeshStandardMaterial,
+} from "./MeshPhysicalMaterial/MeshPhysicalMaterial";
 
 patchMeshPhysicalMaterial();
+patchMeshStandardMaterial();

@@ -20,10 +20,10 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@types/three": "^0.152.1",
-    "three": "^0.153.0",
-    "typescript": "^5.0.2",
-    "vite": "^4.3.9",
+    "@types/three": "^0.158.2",
+    "three": "^0.158.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0",
     "vite-plugin-glsl": "^1.1.2"
   }
 }
