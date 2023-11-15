@@ -1,5 +1,5 @@
 {
-  "name": "three-hex-tilebreaking",
+  "name": "three-hex-tiling",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -7,7 +7,7 @@
     "dist"
   ],
   "main": "./dist/index.cjs",
-  "module": "./dist/indeex.js",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -21,9 +21,15 @@
   },
   "devDependencies": {
     "@types/three": "^0.158.2",
+    "lil-gui": "^0.19.1",
     "three": "^0.158.0",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
-    "vite-plugin-glsl": "^1.1.2"
+    "vite-plugin-glsl": "^1.1.2",
+    "@sentry/react": "^7.64.0",
+    "@sentry/tracing": "^7.64.0"
+  },
+  "peerDependencies": {
+    "three": "^0.158.0"
   }
 }

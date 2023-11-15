@@ -1,7 +1,10 @@
+/// <reference types="vite-plugin-glsl/ext" />
+
 import {
   patchMeshPhysicalMaterial,
   patchMeshStandardMaterial,
-} from "./MeshPhysicalMaterial/MeshPhysicalMaterial";
+} from "./materials";
+export { type HexTilingParams } from "./materials";
 
 patchMeshPhysicalMaterial();
 patchMeshStandardMaterial();

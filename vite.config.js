@@ -12,7 +12,7 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points
       entry: resolve(__dirname, "src/index.ts"),
-      name: "three-hex-tilebreaking",
+      name: "three-hex-tiling",
       // the proper extensions will be added
       fileName: "index",
     },
