@@ -4,13 +4,13 @@
 
 Extends built-in Three.JS materials to support infinite, non-repeating, seamless texture tiling.
 
-![Screenshot showing comparison between a repeating seamless texture with and without three-hex-tiling.  The image is divided in half horizontally by a gray bar.  The left side is labeled "baseline" and shows a gray rock-like texture that clearly repeats, resulting in an artifical grid-like pattern.  The right side has the same gray rock texture but without any visible tiling and is labeled three-hex-tiling.](https://i.ameo.link/bpn.jpg)
+![Screenshot showing comparison between a repeating seamless rock texture with and without three-hex-tiling.  The image is divided in half horizontally by a gray bar.  The left side is labeled "baseline" and shows a gray rock-like texture that clearly repeats, resulting in an artifical grid-like pattern.  The right side has the same rock texture but without any visible tiling and is labeled three-hex-tiling.](https://i.ameo.link/bpu.jpg)
 
 Live interactive demo: <https://three-hex-tiling.ameo.design/>
 
 ## Installation
 
-`npm install --save three-hex-tiling`
+`npm install three-hex-tiling`
 
 Then, to enable it, just add this to your project as early as possible:
 
@@ -22,7 +22,7 @@ This import will patch Three.JS's shaders and materials to support the hex tilin
 
 ### Three.JS Version Support
 
-This library has been tested with Three.JS version `0.158`.  Although it may work with other versions, support is not guaranteed.
+This library has been tested with Three.JS versions `0.151` to `0.158`.  Although it may work with other versions, support is not guaranteed.
 
 ## Usage
 

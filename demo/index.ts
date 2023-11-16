@@ -11,6 +11,8 @@ import "../src/index";
 
 import { type HexTilingParams } from "../src/index";
 
+console.log("three.js version:", THREE.REVISION);
+
 const canvas = document.createElement("canvas");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
