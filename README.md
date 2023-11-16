@@ -2,11 +2,11 @@
 [![npm version](https://img.shields.io/npm/v/three-hex-tiling.svg?style=flat-square)](https://www.npmjs.com/package/three-hex-tiling)
 [![twitter](https://flat.badgen.net/badge/twitter/@ameobea10/?icon&label)](https://twitter.com/ameobea10)
 
-Extends built-in Three.JS materials to support infinite non-repeating seamless texture tiling.
+Extends built-in Three.JS materials to support infinite, non-repeating, seamless texture tiling.
 
-TODO: Side-by-side comparison image
+![Screenshot showing comparison between a repeating seamless texture with and without three-hex-tiling.  The image is divided in half horizontally by a gray bar.  The left side is labeled "baseline" and shows a gray rock-like texture that clearly repeats, resulting in an artifical grid-like pattern.  The right side has the same gray rock texture but without any visible tiling and is labeled three-hex-tiling.](https://i.ameo.link/bpn.jpg)
 
-Live demo: <https://three-hex-tiling.ameo.design/>
+Live interactive demo: <https://three-hex-tiling.ameo.design/>
 
 ## Installation
 
@@ -67,9 +67,7 @@ myTextureRoughnessMap.needsUpdate = true;
 
 ### Supported Textures
 
-Hex tiling avoids the visible repetition caused by repeating the textures, but it can't hide the seams of non-seamless textures.
-
-Because of this, textures used with `three-hex-tiling` must be seamless - meaning that there are no sharp cutoffs when the texture is tiled.  There's a good chance your textures are seamless already and if they aren't, it will be obvious.
+Textures used with `three-hex-tiling` must be seamless - meaning that there are no sharp cutoffs when the texture is tiled.  There's a good chance your textures are seamless already and if they aren't, it will be obvious.
 
 ### Supported Materials
 
@@ -88,7 +86,7 @@ In addition to the base texture/color of a material provided in the `map` proper
  * `roughnessMap`
  * `metalnessMap`
 
-## API
+## Config Options
 
 `three-hex-tiling` accepts the following configuration properties in the `hexTiling` object:
 
@@ -96,10 +94,12 @@ In addition to the base texture/color of a material provided in the `map` proper
 
 - **Description**: Scale factor for the hexagonal tiles used to break up the texture. This parameter is crucial in controlling the hex tiling's appearance and requires adjustment for each texture.
 - **Default**: `2`
-- **Range**: `[0, Infinity]`, typically between 0.1 and 16. Optimal values depend on the texture and desired effect.
+- **Range**: `[0, Infinity]`, typically between 0.1 and 8. Optimal values depend on the texture and desired effect.
 - **Behavior**: Larger values create smaller hexagonal tiles, resulting in more texture breakup.
 
-TODO: Comparison image table
+| ![Screenshot of a black and red lava-like texture with three-hex-tiling applied with a patch scale of 1](https://i.ameo.link/bp2.jpg) | ![Screenshot of a black and red lava-like texture with three-hex-tiling applied with a patch scale of 2](https://i.ameo.link/bp3.jpg) | ![Screenshot of a black and red lava-like texture with three-hex-tiling applied with a patch scale of 6](https://i.ameo.link/bp5.jpg) |
+|----------------------------------|----------------------------------|----------------------------------|
+| Patch Scale: 1                   | Patch Scale: 2                   | Patch Scale: 6                   |
 
 ### `useContrastCorrectedBlending: boolean`
 
@@ -107,7 +107,9 @@ TODO: Comparison image table
 - **Default**: `true`
 - **Reference**: [ShaderToy Demo](https://www.shadertoy.com/view/4dcSDr)
 
-TODO: Comparison image table
+| ![Screenshot of a rocky/mineral-like texture with three-hex-tiling applied and contrast-corrected blending enabled](https://i.ameo.link/bp8.jpg)     | ![Screenshot of a rocky/mineral-like texture with three-hex-tiling applied and contrast-corrected blending disabled](https://i.ameo.link/bp9.jpg)      |
+|--------------------------------------|---------------------------------------|
+| Contrast-Corrected Blending: Enabled | Contrast-Corrected Blending: Disabled |
 
 ### `lookupSkipThreshold: number`
 
@@ -117,8 +119,6 @@ TODO: Comparison image table
 - **Advice**: Usually doesn't require modification.
 - **Details**: The shader mixes up to three texture samples per fragment. Texture lookups with a final coefficient less than this threshold are skipped to reduce GPU memory bandwidth usage.
 
-TODO: Comparison image table
-
 ### `textureSampleCoefficientExponent: number`
 
 - **Description**: The exponent for texture sample coefficients before comparison with `lookupSkipThreshold`. Adjusting this value affects shader efficiency and the visibility of hexagonal tile borders.
@@ -127,9 +127,9 @@ TODO: Comparison image table
 - **Advice**: The default value is suitable for most textures. Modification is usually unnecessary.
 - **Details**: Coefficients raised to this exponent modify the steepness of the threshold for skipping texture lookups. Higher exponents increase efficiency by reducing texture lookups, potentially making the shader more efficient.
 
-TODO: Comparison image table
-
-There's nothing technically stopping it from working with the other maps,
+| ![Screenshot of a gray rock-like texture with three-hex-tiling applied with a texture sample coefficient exponent of 1](https://i.ameo.link/bpi.jpg) | ![Screenshot of a gray rock-like texture with three-hex-tiling applied with a texture sample coefficient exponent of 2](https://i.ameo.link/bph.jpg) | ![Screenshot of a gray rock-like texture with three-hex-tiling applied with a texture sample coefficient exponent of 8](https://i.ameo.link/bpg.jpg) |
+|----------------------------------|----------------------------------|----------------------------------|
+| Texture Sample Coefficient Exponent: 1    | Texture Sample Coefficient Exponent: 2    | Texture Sample Coefficient Exponent: 8    |
 
 ## Performance
 
@@ -149,6 +149,8 @@ There are some ways to tune `three-hex-tiling` to lessen its performance impact:
  * Reduce the size of textures used or use [compressed textures](https://threejs.org/docs/#api/en/textures/CompressedTexture)
 
 ## Implementation Details
+
+The hex tiling shader itself is adapted from [a Shadertoy](https://www.shadertoy.com/view/MdyfDV) by [Fabrice Neyret](http://evasion.imag.fr/Membres/Fabrice.Neyret/).
 
 `three-hex-tiling` works by modifying Three.JS's shaders directly, patching in the hex tiling algorithm and conditionally enabling it for materials that opt in.  Materials that do not explicitly set `hexTiling` will work normally.
 

@@ -46,6 +46,13 @@ const Materials: { [key: string]: TexturesDef } = {
     nonTilingTextureScale: 22,
     tilingTextureScale: 42,
   },
+  cartoonLava: {
+    textureURL: "https://i.ameo.link/bl9.jpg",
+    textureNormalURL: "https://i.ameo.link/bla.jpg",
+    textureRoughnessURL: "https://i.ameo.link/blb.jpg",
+    nonTilingTextureScale: 12 * 2,
+    tilingTextureScale: 24 * 2,
+  },
 };
 
 interface Textures {

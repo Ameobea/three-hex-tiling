@@ -1,0 +1,16 @@
+.vscode
+build-demo
+demo
+node_modules
+public
+src
+.gitignore
+index.html
+Justfile
+README.md
+tsconfig.json
+vite.config.js
+yarn-error.log
+yarn.lock
+dist/*.glb
+dist/*.gltf
