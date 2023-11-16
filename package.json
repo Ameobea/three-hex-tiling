@@ -1,6 +1,6 @@
 {
   "name": "three-hex-tiling",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "files": [
     "dist"
@@ -30,6 +30,6 @@
     "vite-plugin-glsl": "^1.1.2"
   },
   "peerDependencies": {
-    "three": "^0.158.0"
+    "three": ">=0.151 <0.159"
   }
 }
