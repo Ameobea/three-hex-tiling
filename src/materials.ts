@@ -1,9 +1,9 @@
 import {
   ShaderLib,
   MeshStandardMaterial,
-  type Shader,
   type WebGLRenderer,
   MeshPhysicalMaterial,
+  type ShaderLibShader,
 } from "three";
 import {
   buildFragment,
@@ -29,9 +29,9 @@ const buildOnBeforeCompile = <
     defines: { [key: string]: string };
   }
 >(
-  shaderMap: Map<string, Shader>
+  shaderMap: Map<string, ShaderLibShader>
 ) =>
-  function (this: T, shader: Shader, _renderer: WebGLRenderer) {
+  function (this: T, shader: ShaderLibShader, _renderer: WebGLRenderer) {
     const hexTilingID = genRandomStringID();
     (this as any).hexTilingID = hexTilingID;
     shaderMap.set(hexTilingID, shader);
@@ -51,7 +51,7 @@ const buildCustomProgramCacheKey = <
   };
 
 const buildOnBeforeRender = <T extends { hexTiling: Partial<HexTilingParams> }>(
-  shaderMap: Map<string, Shader>
+  shaderMap: Map<string, ShaderLibShader>
 ) =>
   function onBeforeRender(this: T) {
     const shaderRef = shaderMap.get((this as any).hexTilingID);
@@ -78,7 +78,7 @@ const EMPTY_HEX_TILING_PARAMS = Object.freeze({});
 const patchMaterial = (
   MaterialToPatch: typeof MeshStandardMaterial | typeof MeshPhysicalMaterial
 ) => {
-  const shaderMap = new Map<string, Shader>();
+  const shaderMap = new Map<string, ShaderLibShader>();
 
   MaterialToPatch.prototype.onBeforeCompile = buildOnBeforeCompile(shaderMap);
   MaterialToPatch.prototype.customProgramCacheKey =
