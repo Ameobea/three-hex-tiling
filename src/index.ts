@@ -71,7 +71,7 @@ export interface HexTilingParams {
 }
 
 declare module "three" {
-  export interface MeshStandardMaterialParameters {
+  export interface MeshStandardMaterial {
     /**
      * Parameters for controlling the hex tiling from `three-hex-tiling`.
      *
@@ -82,7 +82,7 @@ declare module "three" {
     hexTiling?: Partial<HexTilingParams>;
   }
 
-  export interface MeshPhysicalMaterialParameters {
+  export interface MeshStandardMaterialParameters {
     /**
      * Parameters for controlling the hex tiling from `three-hex-tiling`.
      *
