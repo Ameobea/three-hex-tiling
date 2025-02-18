@@ -24,7 +24,9 @@ ${match[0]}
   return haystack.replace(regex, updatedMatch);
 };
 
-export const buildFragment = (baseFragmentShader: string) => {
+let DidPatchShaderChunks = false;
+
+const patchShaderChunks = () => {
   THREE.ShaderChunk.map_fragment = buildConditionalReplacer(
     THREE.ShaderChunk.map_fragment,
     /texture2D\(\s*map\s*,\s*vMapUv\s*\)/g,
@@ -51,6 +53,13 @@ export const buildFragment = (baseFragmentShader: string) => {
 
   (THREE.ShaderChunk as any).tilebreaking_pars_fragment =
     tileBreakingNeyretFragment;
+};
+
+export const buildFragment = (baseFragmentShader: string) => {
+  if (!DidPatchShaderChunks) {
+    DidPatchShaderChunks = true;
+    patchShaderChunks();
+  }
 
   let fragment = baseFragmentShader;
   fragment = fragment.replace(

@@ -1,7 +1,7 @@
 {
   "name": "three-hex-tiling",
   "license": "MIT",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "files": [
     "dist"
@@ -22,9 +22,9 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@types/three": "^0.170.0",
+    "@types/three": "^0.173.0",
     "lil-gui": "^0.19.2",
-    "three": "^0.171.0",
+    "three": "^0.173.0",
     "typescript": "^5.5.4",
     "vite": "^5.4.2",
     "vite-plugin-dts": "^4.0.3",

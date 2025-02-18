@@ -22,7 +22,7 @@ This import will patch Three.JS's shaders and materials to support the hex tilin
 
 ### Three.JS Version Support
 
-This library has been tested with Three.JS versions `0.151` to `0.171`.  Although it may work with other versions, support is not guaranteed.
+This library has been tested with Three.JS versions `0.151` through `0.173`.  Although it may work with other versions, support is not guaranteed.
 
 ## Usage
 
